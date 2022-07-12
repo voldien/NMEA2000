@@ -126,8 +126,8 @@ bool SeasmartToN2k(const char *buffer, uint32_t &timestamp, tN2kMsg &msg) {
   }
   s += 7;
 
-  uint32_t pgnHigh;
-  uint32_t pgnLow;
+  uint32_t pgnHigh = 0;
+  uint32_t pgnLow = 0;
   if (!readNHexByte(s, 1, pgnHigh)) {
     return false;
   }
@@ -143,7 +143,7 @@ bool SeasmartToN2k(const char *buffer, uint32_t &timestamp, tN2kMsg &msg) {
   }
   s += 9;
 
-  uint32_t source;
+  uint32_t source = 0;
   if (!readNHexByte(s, 1, source)) {
     return false;
   }
@@ -164,7 +164,7 @@ bool SeasmartToN2k(const char *buffer, uint32_t &timestamp, tN2kMsg &msg) {
     return false;
   }
   for (int i = 0; i < dataLen; i++) {
-    uint32_t byte;
+    uint32_t byte = 0;
     if (!readNHexByte(s, 1, byte)) {
       return false;
     }
@@ -174,7 +174,7 @@ bool SeasmartToN2k(const char *buffer, uint32_t &timestamp, tN2kMsg &msg) {
 
   // Skip the terminating '*' which marks beginning of checksum
   s += 1;
-  uint32_t checksum;
+  uint32_t checksum = 0;
   if (!readNHexByte(s, 1, checksum)) {
     return false;
   }
