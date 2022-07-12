@@ -23,9 +23,13 @@
 
 
 add_library(nmea2000
+  N2kGroupFunctionDefaultHandlers.cpp
+  N2kGroupFunction.cpp
   N2kMsg.cpp
   N2kStream.cpp
   N2kMessages.cpp
+  NMEA2000.cpp
+  RingBuffer.tpp
   Seasmart.cpp
 )
 
