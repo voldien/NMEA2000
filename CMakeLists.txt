@@ -30,8 +30,11 @@ add_compile_options(
   -g
 )
 
-enable_testing()
-
 add_subdirectory(src)
 add_subdirectory(third-party/catch)
-add_subdirectory(test)
+
+OPTION(NMEA200_TEST "Build Test Suites" OFF)
+if(NMEA200_TEST)
+  enable_testing()
+  add_subdirectory(test)
+endif()
